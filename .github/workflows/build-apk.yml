@@ -35,8 +35,10 @@ jobs:
             -keypass android \
             -dname "CN=Android Debug,O=Android,C=US"
 
-      - name: Grant gradlew permission
-        run: chmod +x ./gradlew
+      - name: Setup Gradle wrapper
+        run: |
+          gradle wrapper --gradle-version 8.7
+          chmod +x ./gradlew
 
       - name: Build APK
         run: ./gradlew assembleDebug
